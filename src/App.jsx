@@ -9,6 +9,11 @@ function App() {
     try {
       console.log(val);
 
+      if (inputValu === 'Infinity') {
+          setInputValu(val)
+          return
+      }
+
       if (val === "AC") {
         setInputValu("");
         return;
