@@ -11,7 +11,7 @@ function App() {
 
       if (inputValu === 'Infinity') {
           setInputValu(val)
-          return
+           return
       }
 
       if (val === "AC") {
