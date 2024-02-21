@@ -1,17 +1,18 @@
-import { useState } from "react";
-import "./App.css";
+import { useRef, useState, useEffect } from "react";
 import Buttons from "./Buttons";
+import { values } from "./utils/buttonsValues";
 
 function App() {
   const [inputValu, setInputValu] = useState("");
+  const equalto = useRef(null)
 
   const handleButton = (val) => {
     try {
       console.log(val);
 
       if (inputValu === 'Infinity') {
-          setInputValu(val)
-           return
+        setInputValu(val)
+        return
       }
 
       if (val === "AC") {
@@ -76,30 +77,9 @@ function App() {
     }
   };
 
-  const values = [
-    "AC",
-    "DE",
-    ".",
-    "/",
-    1,
-    2,
-    3,
-    "*",
-    4,
-    5,
-    6,
-    "-",
-    7,
-    8,
-    9,
-    "+",
-    "00",
-    0,
-  ];
-
   return (
     <>
-      <div className="bg-[#3a4452] p-5 rounded-xl max-w-[360px] overflow-hidden">
+      <div className=" bg-black p-5 rounded-xl max-w-[360px] overflow-hidden  lg:mt-10 sm:mt-56 md:mt-53 mt-20">
         <div className="justify-end ">
           <div className="text-right shadow-none bg-transparent text-[40px] border-none min-h-16 max-w-[360px]  ">
             <span className="overflow-hidden">{inputValu}</span>
@@ -113,21 +93,24 @@ function App() {
           <button
             onClick={() => handleButton("=")}
             className="col-span-2"
+            ref={equalto}
             style={{
               textAlign: "center",
               border: "0px",
               outline: "0px",
-              width: "120px",
+              width: "140px",
               height: "60px",
               borderRadius: "10px",
               boxShadow:
-                "rgba(255, 255, 255, 0.1) -8px -8px 15px, rgba(255, 255, 255, 0.1) 5px 5px 15px",
+                "-1px -1px 5px rgba(255, 255, 255, 1),1px 1px 5px rgba(255, 255, 255, 1)",
               margin: "10px",
               cursor: "pointer",
-              backgroundColor: "#3a4452",
             }}
+
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#f0fef0", e.target.style.color = 'black')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent", e.target.style.color = 'white')}
           >
-            =
+            <span className="font-bold">=</span>
           </button>
         </div>
       </div>
